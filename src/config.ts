@@ -1,4 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const config = {
+export type Config = {
+  ID: string;
+};
+
+export const config: Config = {
   ID: "1",
 };
