@@ -1,8 +1,14 @@
-type GetResponse = {
-	result: "done" | "error";
-	data?: unknown;
-	error?: string;
+type GetSuccessResponse = {
+	result: "done";
+	data: unknown;
 };
+
+type GetErrorResponse = {
+	result: "error";
+	error: string;
+};
+
+type GetResponse = GetSuccessResponse | GetErrorResponse;
 
 function _doGet() {
 	const e = { parameter: { type: "" } };
@@ -13,7 +19,7 @@ function _doGet() {
 function doGet(
 	e: GoogleAppsScript.Events.DoGet,
 ): GoogleAppsScript.Content.TextOutput {
-	const response: GetResponse = { result: "done" };
+	let response: GetResponse;
 
 	try {
 		const type = e.parameter.type;
@@ -22,10 +28,15 @@ function doGet(
 			throw new Error("Invalid parameter.");
 		}
 
-		response.data = type;
+		response = {
+			result: "done",
+			data: { message: `Received type: ${type}` },
+		};
 	} catch (error) {
-		response.result = "error";
-		response.error = error.message;
+		response = {
+			result: "error",
+			error: error.message,
+		};
 	}
 
 	return ContentService.createTextOutput(JSON.stringify(response));
