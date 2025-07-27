@@ -9,19 +9,6 @@ A template project for developing Google Apps Script (GAS) applications with Typ
 - Basic GET/POST request handling
 - Type safety
 
-## 📁 Project Structure
-
-```
-├── LICENSE                  # MIT License
-├── package.json            # npm configuration
-├── README.md               # This file
-├── tsconfig.json          # TypeScript configuration
-└── src/
-    ├── appsscript.json    # GAS configuration
-    ├── doGet.ts          # GET request handler
-    └── doPost.ts         # POST request handler
-```
-
 ## 🛠️ Setup
 
 ### 1. Install Dependencies
@@ -88,61 +75,11 @@ npm run check:write
 TypeScript files need to be transpiled to JavaScript before deployment:
 
 ```bash
-# Transpile TypeScript to JavaScript
-npx tsc
-
 # Deploy to GAS
 clasp push
 
 # Deploy as web app
 clasp deploy
-```
-
-## 🔧 API Specification
-
-### GET Endpoint
-
-**URL:** `https://script.google.com/macros/s/{SCRIPT_ID}/exec?type={TYPE}`
-
-**Response:**
-```json
-{
-  "result": "done" | "error",
-  "data": "Echoed type parameter",
-  "error": "Error message (only when error occurs)"
-}
-```
-
-**Example:**
-```bash
-curl "https://script.google.com/macros/s/{SCRIPT_ID}/exec?type=hello"
-```
-
-### POST Endpoint
-
-**URL:** `https://script.google.com/macros/s/{SCRIPT_ID}/exec`
-
-**Request Body:**
-```json
-{
-  "type": "Required parameter"
-}
-```
-
-**Response:**
-```json
-{
-  "result": "done" | "error",
-  "error": "Error message (only when error occurs)"
-}
-```
-
-**Example:**
-```bash
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"type": "hello"}' \
-  "https://script.google.com/macros/s/{SCRIPT_ID}/exec"
 ```
 
 ## 🔧 Customization
@@ -165,11 +102,3 @@ curl -X POST \
 - [clasp Official Documentation](https://github.com/google/clasp)
 - [TypeScript Official Documentation](https://www.typescriptlang.org/)
 - [Biome Official Documentation](https://biomejs.dev/)
-
-## 📄 License
-
-MIT License - See [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Pull requests and issues are always welcome!
