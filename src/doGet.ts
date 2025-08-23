@@ -41,3 +41,5 @@ function doGet(
 
 	return ContentService.createTextOutput(JSON.stringify(response));
 }
+
+global.doGet = doGet;
