@@ -30,7 +30,7 @@ function doPost(
 	} catch (error) {
 		response = {
 			result: "error",
-			error: error.message,
+			error: error instanceof Error ? error.message : String(error),
 		};
 	}
 

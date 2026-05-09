@@ -44,8 +44,7 @@ Ensure `.clasp.json` has `rootDir` set to `dist`:
 | Command | Description |
 |---------|-------------|
 | `pnpm build` | Compile TypeScript and copy appsscript.json to dist/ |
-| `pnpm check` | Run Biome lint/format check |
-| `pnpm check:write` | Auto-fix with Biome |
+| `pnpm fix` | Auto-fix lint and formatting with Biome |
 
 ## Workflow
 
