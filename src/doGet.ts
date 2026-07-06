@@ -39,5 +39,7 @@ function doGet(
 		};
 	}
 
-	return ContentService.createTextOutput(JSON.stringify(response));
+	return ContentService.createTextOutput(JSON.stringify(response)).setMimeType(
+		ContentService.MimeType.JSON,
+	);
 }

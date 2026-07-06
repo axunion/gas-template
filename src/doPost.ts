@@ -10,7 +10,7 @@ type PostErrorResponse = {
 type PostResponse = PostSuccessResponse | PostErrorResponse;
 
 function _doPost() {
-	const e = { parameter: { type: "" } };
+	const e = { postData: { contents: JSON.stringify({ type: "" }) } };
 	const result = doPost(e as unknown as GoogleAppsScript.Events.DoPost);
 	console.log(result.getContent());
 }
@@ -34,5 +34,7 @@ function doPost(
 		};
 	}
 
-	return ContentService.createTextOutput(JSON.stringify(response));
+	return ContentService.createTextOutput(JSON.stringify(response)).setMimeType(
+		ContentService.MimeType.JSON,
+	);
 }
