@@ -4,11 +4,12 @@
 	"private": true,
 	"scripts": {
 		"build": "tsc && cp src/appsscript.json dist/appsscript.json",
+		"check": "biome check ./src && tsc --noEmit",
 		"fix": "biome check --write ./src"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.5.3",
-		"@types/google-apps-script": "^2.0.11",
+		"@biomejs/biome": "^2.5.13",
+		"@types/google-apps-script": "^2.0.13",
 		"typescript": "^7.0.2"
 	}
 }
